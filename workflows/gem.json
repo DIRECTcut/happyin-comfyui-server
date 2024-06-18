@@ -1,0 +1,1654 @@
+{
+    "27": {
+        "inputs": {
+            "image": [
+                "674",
+                0
+            ]
+        },
+        "class_type": "Get resolution [Crystools]",
+        "_meta": {
+            "title": "🪛 Get resolution"
+        }
+    },
+    "36": {
+        "inputs": {
+            "upscale_by": 2,
+            "seed": 549884841528674,
+            "steps": 25,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.25,
+            "mode_type": "Linear",
+            "tile_width": 800,
+            "tile_height": 800,
+            "mask_blur": 15,
+            "tile_padding": 48,
+            "seam_fix_mode": "None",
+            "seam_fix_denoise": 1,
+            "seam_fix_width": 64,
+            "seam_fix_mask_blur": 8,
+            "seam_fix_padding": 16,
+            "force_uniform_tiles": true,
+            "tiled_decode": false,
+            "image": [
+                "103",
+                0
+            ],
+            "model": [
+                "86",
+                0
+            ],
+            "positive": [
+                "89",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ],
+            "upscale_model": [
+                "37",
+                0
+            ]
+        },
+        "class_type": "UltimateSDUpscale",
+        "_meta": {
+            "title": "Ultimate SD Upscale"
+        }
+    },
+    "37": {
+        "inputs": {
+            "model_name": "4x_NMKD-Siax_200k.pth"
+        },
+        "class_type": "Upscale Model Loader",
+        "_meta": {
+            "title": "Upscale Model Loader"
+        }
+    },
+    "84": {
+        "inputs": {
+            "side_length": 800,
+            "side": "Longest",
+            "upscale_method": "bicubic",
+            "crop": "disabled",
+            "image": [
+                "674",
+                0
+            ]
+        },
+        "class_type": "DF_Image_scale_to_side",
+        "_meta": {
+            "title": "Image scale to side"
+        }
+    },
+    "85": {
+        "inputs": {
+            "pixels": [
+                "84",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+            "title": "VAE Encode"
+        }
+    },
+    "86": {
+        "inputs": {
+            "ckpt_name": "realisticVisionV60B1_v51VAE.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+            "title": "Load Checkpoint"
+        }
+    },
+    "87": {
+        "inputs": {
+            "lora_name": "gem01-01.safetensors",
+            "strength_model": 0.2,
+            "strength_clip": 1,
+            "model": [
+                "86",
+                0
+            ],
+            "clip": [
+                "86",
+                1
+            ]
+        },
+        "class_type": "LoraLoader",
+        "_meta": {
+            "title": "Load LoRA"
+        }
+    },
+    "88": {
+        "inputs": {
+            "vae_name": "vae-ft-mse-840000-ema-pruned.ckpt"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+            "title": "Load VAE"
+        }
+    },
+    "89": {
+        "inputs": {
+            "text": "natural (rainbow:1.1) diamond ",
+            "clip": [
+                "87",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "92": {
+        "inputs": {
+            "text": "(deformed, dust, scratches :1.3), poorly drawn, blurry",
+            "clip": [
+                "86",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "93": {
+        "inputs": {
+            "seed": [
+                "624",
+                0
+            ],
+            "steps": 25,
+            "cfg": 6,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.15,
+            "model": [
+                "86",
+                0
+            ],
+            "positive": [
+                "89",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "85",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "95": {
+        "inputs": {
+            "filename_prefix": "GEM\\01",
+            "images": [
+                "625",
+                0
+            ],
+            "mask": [
+                "142",
+                0
+            ]
+        },
+        "class_type": "SaveImageWithAlpha",
+        "_meta": {
+            "title": "Save Image With Alpha"
+        }
+    },
+    "103": {
+        "inputs": {
+            "samples": [
+                "616",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "135": {
+        "inputs": {
+            "mask": [
+                "141",
+                0
+            ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+            "title": "Convert Mask to Image"
+        }
+    },
+    "141": {
+        "inputs": {
+            "mask": [
+                "674",
+                1
+            ]
+        },
+        "class_type": "InvertMask",
+        "_meta": {
+            "title": "InvertMask"
+        }
+    },
+    "142": {
+        "inputs": {
+            "channel": "blue",
+            "image": [
+                "618",
+                0
+            ]
+        },
+        "class_type": "ImageToMask",
+        "_meta": {
+            "title": "Convert Image to Mask"
+        }
+    },
+    "151": {
+        "inputs": {
+            "width": [
+                "27",
+                0
+            ],
+            "height": [
+                "27",
+                1
+            ],
+            "interpolation": "lanczos",
+            "method": "stretch",
+            "condition": "always",
+            "multiple_of": 0,
+            "image": [
+                "36",
+                0
+            ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+            "title": "🔧 Image Resize"
+        }
+    },
+    "392": {
+        "inputs": {
+            "image": [
+                "674",
+                0
+            ]
+        },
+        "class_type": "Get resolution [Crystools]",
+        "_meta": {
+            "title": "🪛 Get resolution"
+        }
+    },
+    "393": {
+        "inputs": {
+            "upscale_by": 2,
+            "seed": 685596694404264,
+            "steps": 25,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.25,
+            "mode_type": "Linear",
+            "tile_width": 800,
+            "tile_height": 800,
+            "mask_blur": 15,
+            "tile_padding": 48,
+            "seam_fix_mode": "None",
+            "seam_fix_denoise": 1,
+            "seam_fix_width": 64,
+            "seam_fix_mask_blur": 8,
+            "seam_fix_padding": 16,
+            "force_uniform_tiles": true,
+            "tiled_decode": false,
+            "image": [
+                "400",
+                0
+            ],
+            "model": [
+                "86",
+                0
+            ],
+            "positive": [
+                "89",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ],
+            "upscale_model": [
+                "37",
+                0
+            ]
+        },
+        "class_type": "UltimateSDUpscale",
+        "_meta": {
+            "title": "Ultimate SD Upscale"
+        }
+    },
+    "398": {
+        "inputs": {
+            "seed": 1015565861171114,
+            "steps": 20,
+            "cfg": 8,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.2,
+            "model": [
+                "87",
+                0
+            ],
+            "positive": [
+                "89",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "85",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "399": {
+        "inputs": {
+            "filename_prefix": "GEM\\02",
+            "images": [
+                "627",
+                0
+            ],
+            "mask": [
+                "405",
+                0
+            ]
+        },
+        "class_type": "SaveImageWithAlpha",
+        "_meta": {
+            "title": "Save Image With Alpha"
+        }
+    },
+    "400": {
+        "inputs": {
+            "samples": [
+                "629",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "402": {
+        "inputs": {
+            "mask": [
+                "404",
+                0
+            ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+            "title": "Convert Mask to Image"
+        }
+    },
+    "404": {
+        "inputs": {
+            "mask": [
+                "674",
+                1
+            ]
+        },
+        "class_type": "InvertMask",
+        "_meta": {
+            "title": "InvertMask"
+        }
+    },
+    "405": {
+        "inputs": {
+            "channel": "blue",
+            "image": [
+                "402",
+                0
+            ]
+        },
+        "class_type": "ImageToMask",
+        "_meta": {
+            "title": "Convert Image to Mask"
+        }
+    },
+    "408": {
+        "inputs": {
+            "width": [
+                "392",
+                0
+            ],
+            "height": [
+                "392",
+                1
+            ],
+            "interpolation": "lanczos",
+            "method": "stretch",
+            "condition": "always",
+            "multiple_of": 0,
+            "image": [
+                "393",
+                0
+            ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+            "title": "🔧 Image Resize"
+        }
+    },
+    "457": {
+        "inputs": {
+            "image": [
+                "674",
+                0
+            ]
+        },
+        "class_type": "Get resolution [Crystools]",
+        "_meta": {
+            "title": "🪛 Get resolution"
+        }
+    },
+    "458": {
+        "inputs": {
+            "upscale_by": 2,
+            "seed": 577825586588267,
+            "steps": 25,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.25,
+            "mode_type": "Linear",
+            "tile_width": 800,
+            "tile_height": 800,
+            "mask_blur": 15,
+            "tile_padding": 48,
+            "seam_fix_mode": "None",
+            "seam_fix_denoise": 1,
+            "seam_fix_width": 64,
+            "seam_fix_mask_blur": 8,
+            "seam_fix_padding": 16,
+            "force_uniform_tiles": true,
+            "tiled_decode": false,
+            "image": [
+                "465",
+                0
+            ],
+            "model": [
+                "86",
+                0
+            ],
+            "positive": [
+                "588",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ],
+            "upscale_model": [
+                "37",
+                0
+            ]
+        },
+        "class_type": "UltimateSDUpscale",
+        "_meta": {
+            "title": "Ultimate SD Upscale"
+        }
+    },
+    "463": {
+        "inputs": {
+            "seed": 718335675779072,
+            "steps": 20,
+            "cfg": 8,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.22,
+            "model": [
+                "86",
+                0
+            ],
+            "positive": [
+                "588",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "85",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "464": {
+        "inputs": {
+            "filename_prefix": "GEM\\03",
+            "images": [
+                "631",
+                0
+            ],
+            "mask": [
+                "470",
+                0
+            ]
+        },
+        "class_type": "SaveImageWithAlpha",
+        "_meta": {
+            "title": "Save Image With Alpha"
+        }
+    },
+    "465": {
+        "inputs": {
+            "samples": [
+                "632",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "467": {
+        "inputs": {
+            "mask": [
+                "469",
+                0
+            ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+            "title": "Convert Mask to Image"
+        }
+    },
+    "469": {
+        "inputs": {
+            "mask": [
+                "674",
+                1
+            ]
+        },
+        "class_type": "InvertMask",
+        "_meta": {
+            "title": "InvertMask"
+        }
+    },
+    "470": {
+        "inputs": {
+            "channel": "blue",
+            "image": [
+                "467",
+                0
+            ]
+        },
+        "class_type": "ImageToMask",
+        "_meta": {
+            "title": "Convert Image to Mask"
+        }
+    },
+    "473": {
+        "inputs": {
+            "width": [
+                "457",
+                0
+            ],
+            "height": [
+                "457",
+                1
+            ],
+            "interpolation": "lanczos",
+            "method": "stretch",
+            "condition": "always",
+            "multiple_of": 0,
+            "image": [
+                "458",
+                0
+            ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+            "title": "🔧 Image Resize"
+        }
+    },
+    "475": {
+        "inputs": {
+            "image": [
+                "674",
+                0
+            ]
+        },
+        "class_type": "Get resolution [Crystools]",
+        "_meta": {
+            "title": "🪛 Get resolution"
+        }
+    },
+    "476": {
+        "inputs": {
+            "upscale_by": 2,
+            "seed": 378772454396616,
+            "steps": 25,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.25,
+            "mode_type": "Linear",
+            "tile_width": 800,
+            "tile_height": 800,
+            "mask_blur": 15,
+            "tile_padding": 48,
+            "seam_fix_mode": "None",
+            "seam_fix_denoise": 1,
+            "seam_fix_width": 64,
+            "seam_fix_mask_blur": 8,
+            "seam_fix_padding": 16,
+            "force_uniform_tiles": true,
+            "tiled_decode": false,
+            "image": [
+                "483",
+                0
+            ],
+            "model": [
+                "86",
+                0
+            ],
+            "positive": [
+                "588",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ],
+            "upscale_model": [
+                "37",
+                0
+            ]
+        },
+        "class_type": "UltimateSDUpscale",
+        "_meta": {
+            "title": "Ultimate SD Upscale"
+        }
+    },
+    "481": {
+        "inputs": {
+            "seed": 115539316114039,
+            "steps": 20,
+            "cfg": 8,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.17,
+            "model": [
+                "87",
+                0
+            ],
+            "positive": [
+                "588",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "85",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "482": {
+        "inputs": {
+            "filename_prefix": "GEM\\04",
+            "images": [
+                "640",
+                0
+            ],
+            "mask": [
+                "488",
+                0
+            ]
+        },
+        "class_type": "SaveImageWithAlpha",
+        "_meta": {
+            "title": "Save Image With Alpha"
+        }
+    },
+    "483": {
+        "inputs": {
+            "samples": [
+                "481",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "485": {
+        "inputs": {
+            "mask": [
+                "487",
+                0
+            ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+            "title": "Convert Mask to Image"
+        }
+    },
+    "487": {
+        "inputs": {
+            "mask": [
+                "674",
+                1
+            ]
+        },
+        "class_type": "InvertMask",
+        "_meta": {
+            "title": "InvertMask"
+        }
+    },
+    "488": {
+        "inputs": {
+            "channel": "blue",
+            "image": [
+                "485",
+                0
+            ]
+        },
+        "class_type": "ImageToMask",
+        "_meta": {
+            "title": "Convert Image to Mask"
+        }
+    },
+    "491": {
+        "inputs": {
+            "width": [
+                "475",
+                0
+            ],
+            "height": [
+                "475",
+                1
+            ],
+            "interpolation": "lanczos",
+            "method": "stretch",
+            "condition": "always",
+            "multiple_of": 0,
+            "image": [
+                "476",
+                0
+            ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+            "title": "🔧 Image Resize"
+        }
+    },
+    "497": {
+        "inputs": {
+            "image": [
+                "674",
+                0
+            ]
+        },
+        "class_type": "Get resolution [Crystools]",
+        "_meta": {
+            "title": "🪛 Get resolution"
+        }
+    },
+    "498": {
+        "inputs": {
+            "upscale_by": 2,
+            "seed": 189095200205557,
+            "steps": 25,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.25,
+            "mode_type": "Linear",
+            "tile_width": 800,
+            "tile_height": 800,
+            "mask_blur": 15,
+            "tile_padding": 48,
+            "seam_fix_mode": "None",
+            "seam_fix_denoise": 1,
+            "seam_fix_width": 64,
+            "seam_fix_mask_blur": 8,
+            "seam_fix_padding": 16,
+            "force_uniform_tiles": true,
+            "tiled_decode": false,
+            "image": [
+                "505",
+                0
+            ],
+            "model": [
+                "592",
+                0
+            ],
+            "positive": [
+                "590",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ],
+            "upscale_model": [
+                "37",
+                0
+            ]
+        },
+        "class_type": "UltimateSDUpscale",
+        "_meta": {
+            "title": "Ultimate SD Upscale"
+        }
+    },
+    "503": {
+        "inputs": {
+            "seed": 120596514477917,
+            "steps": 20,
+            "cfg": 8,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.2,
+            "model": [
+                "592",
+                0
+            ],
+            "positive": [
+                "590",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "85",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "504": {
+        "inputs": {
+            "filename_prefix": "GEM\\05",
+            "images": [
+                "635",
+                0
+            ],
+            "mask": [
+                "510",
+                0
+            ]
+        },
+        "class_type": "SaveImageWithAlpha",
+        "_meta": {
+            "title": "Save Image With Alpha"
+        }
+    },
+    "505": {
+        "inputs": {
+            "samples": [
+                "636",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "507": {
+        "inputs": {
+            "mask": [
+                "509",
+                0
+            ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+            "title": "Convert Mask to Image"
+        }
+    },
+    "509": {
+        "inputs": {
+            "mask": [
+                "674",
+                1
+            ]
+        },
+        "class_type": "InvertMask",
+        "_meta": {
+            "title": "InvertMask"
+        }
+    },
+    "510": {
+        "inputs": {
+            "channel": "blue",
+            "image": [
+                "507",
+                0
+            ]
+        },
+        "class_type": "ImageToMask",
+        "_meta": {
+            "title": "Convert Image to Mask"
+        }
+    },
+    "513": {
+        "inputs": {
+            "width": [
+                "497",
+                0
+            ],
+            "height": [
+                "497",
+                1
+            ],
+            "interpolation": "lanczos",
+            "method": "stretch",
+            "condition": "always",
+            "multiple_of": 0,
+            "image": [
+                "498",
+                0
+            ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+            "title": "🔧 Image Resize"
+        }
+    },
+    "514": {
+        "inputs": {
+            "image": [
+                "674",
+                0
+            ]
+        },
+        "class_type": "Get resolution [Crystools]",
+        "_meta": {
+            "title": "🪛 Get resolution"
+        }
+    },
+    "515": {
+        "inputs": {
+            "upscale_by": 2,
+            "seed": 914442885353833,
+            "steps": 25,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.25,
+            "mode_type": "Linear",
+            "tile_width": 800,
+            "tile_height": 800,
+            "mask_blur": 15,
+            "tile_padding": 48,
+            "seam_fix_mode": "None",
+            "seam_fix_denoise": 1,
+            "seam_fix_width": 64,
+            "seam_fix_mask_blur": 8,
+            "seam_fix_padding": 16,
+            "force_uniform_tiles": true,
+            "tiled_decode": false,
+            "image": [
+                "522",
+                0
+            ],
+            "model": [
+                "592",
+                0
+            ],
+            "positive": [
+                "590",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ],
+            "upscale_model": [
+                "37",
+                0
+            ]
+        },
+        "class_type": "UltimateSDUpscale",
+        "_meta": {
+            "title": "Ultimate SD Upscale"
+        }
+    },
+    "520": {
+        "inputs": {
+            "seed": 1003167124477887,
+            "steps": 20,
+            "cfg": 8,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.25,
+            "model": [
+                "592",
+                0
+            ],
+            "positive": [
+                "590",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "85",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "521": {
+        "inputs": {
+            "filename_prefix": "GEM\\06",
+            "images": [
+                "637",
+                0
+            ],
+            "mask": [
+                "527",
+                0
+            ]
+        },
+        "class_type": "SaveImageWithAlpha",
+        "_meta": {
+            "title": "Save Image With Alpha"
+        }
+    },
+    "522": {
+        "inputs": {
+            "samples": [
+                "638",
+                0
+            ],
+            "vae": [
+                "88",
+                0
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "524": {
+        "inputs": {
+            "mask": [
+                "526",
+                0
+            ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+            "title": "Convert Mask to Image"
+        }
+    },
+    "526": {
+        "inputs": {
+            "mask": [
+                "674",
+                1
+            ]
+        },
+        "class_type": "InvertMask",
+        "_meta": {
+            "title": "InvertMask"
+        }
+    },
+    "527": {
+        "inputs": {
+            "channel": "blue",
+            "image": [
+                "524",
+                0
+            ]
+        },
+        "class_type": "ImageToMask",
+        "_meta": {
+            "title": "Convert Image to Mask"
+        }
+    },
+    "530": {
+        "inputs": {
+            "width": [
+                "514",
+                0
+            ],
+            "height": [
+                "514",
+                1
+            ],
+            "interpolation": "lanczos",
+            "method": "stretch",
+            "condition": "always",
+            "multiple_of": 0,
+            "image": [
+                "515",
+                0
+            ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+            "title": "🔧 Image Resize"
+        }
+    },
+    "588": {
+        "inputs": {
+            "text": "natural clear rainbow diamond, round cut",
+            "clip": [
+                "86",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "590": {
+        "inputs": {
+            "text": "natural clear (rainbow:1.15) diamond, rectangular cut",
+            "clip": [
+                "592",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "592": {
+        "inputs": {
+            "lora_name": "gem01-01.safetensors",
+            "strength_model": 0.4,
+            "strength_clip": 1,
+            "model": [
+                "86",
+                0
+            ],
+            "clip": [
+                "86",
+                1
+            ]
+        },
+        "class_type": "LoraLoader",
+        "_meta": {
+            "title": "Load LoRA"
+        }
+    },
+    "616": {
+        "inputs": {
+            "add_noise": "enable",
+            "noise_seed": 924301169676664,
+            "steps": 30,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "start_at_step": 23,
+            "end_at_step": 10000,
+            "return_with_leftover_noise": "disable",
+            "model": [
+                "86",
+                0
+            ],
+            "positive": [
+                "89",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "93",
+                0
+            ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+            "title": "KSampler (Advanced)"
+        }
+    },
+    "618": {
+        "inputs": {
+            "upscale_method": "nearest-exact",
+            "scale_by": 1,
+            "image": [
+                "135",
+                0
+            ]
+        },
+        "class_type": "ImageScaleBy",
+        "_meta": {
+            "title": "Upscale Image By"
+        }
+    },
+    "624": {
+        "inputs": {
+            "seed": 5
+        },
+        "class_type": "Seed Everywhere",
+        "_meta": {
+            "title": "Seed Everywhere"
+        }
+    },
+    "625": {
+        "inputs": {
+            "sharpen_radius": 1,
+            "sigma": 0.5,
+            "alpha": 0.5,
+            "image": [
+                "151",
+                0
+            ]
+        },
+        "class_type": "ImageSharpen",
+        "_meta": {
+            "title": "ImageSharpen"
+        }
+    },
+    "627": {
+        "inputs": {
+            "sharpen_radius": 1,
+            "sigma": 0.5,
+            "alpha": 0.5,
+            "image": [
+                "408",
+                0
+            ]
+        },
+        "class_type": "ImageSharpen",
+        "_meta": {
+            "title": "ImageSharpen"
+        }
+    },
+    "629": {
+        "inputs": {
+            "add_noise": "enable",
+            "noise_seed": 688915450289993,
+            "steps": 30,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "start_at_step": 19,
+            "end_at_step": 10000,
+            "return_with_leftover_noise": "disable",
+            "model": [
+                "87",
+                0
+            ],
+            "positive": [
+                "89",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "398",
+                0
+            ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+            "title": "KSampler (Advanced)"
+        }
+    },
+    "631": {
+        "inputs": {
+            "sharpen_radius": 1,
+            "sigma": 0.5,
+            "alpha": 0.5,
+            "image": [
+                "473",
+                0
+            ]
+        },
+        "class_type": "ImageSharpen",
+        "_meta": {
+            "title": "ImageSharpen"
+        }
+    },
+    "632": {
+        "inputs": {
+            "add_noise": "enable",
+            "noise_seed": 625607190515890,
+            "steps": 30,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "start_at_step": 19,
+            "end_at_step": 10000,
+            "return_with_leftover_noise": "disable",
+            "model": [
+                "87",
+                0
+            ],
+            "positive": [
+                "588",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "463",
+                0
+            ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+            "title": "KSampler (Advanced)"
+        }
+    },
+    "635": {
+        "inputs": {
+            "sharpen_radius": 1,
+            "sigma": 0.5,
+            "alpha": 0.5,
+            "image": [
+                "513",
+                0
+            ]
+        },
+        "class_type": "ImageSharpen",
+        "_meta": {
+            "title": "ImageSharpen"
+        }
+    },
+    "636": {
+        "inputs": {
+            "add_noise": "enable",
+            "noise_seed": 655457408758490,
+            "steps": 30,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "start_at_step": 19,
+            "end_at_step": 10000,
+            "return_with_leftover_noise": "disable",
+            "model": [
+                "592",
+                0
+            ],
+            "positive": [
+                "590",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "503",
+                0
+            ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+            "title": "KSampler (Advanced)"
+        }
+    },
+    "637": {
+        "inputs": {
+            "sharpen_radius": 1,
+            "sigma": 0.5,
+            "alpha": 0.5,
+            "image": [
+                "530",
+                0
+            ]
+        },
+        "class_type": "ImageSharpen",
+        "_meta": {
+            "title": "ImageSharpen"
+        }
+    },
+    "638": {
+        "inputs": {
+            "add_noise": "enable",
+            "noise_seed": 826965520208923,
+            "steps": 30,
+            "cfg": 5,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "start_at_step": 19,
+            "end_at_step": 10000,
+            "return_with_leftover_noise": "disable",
+            "model": [
+                "592",
+                0
+            ],
+            "positive": [
+                "590",
+                0
+            ],
+            "negative": [
+                "92",
+                0
+            ],
+            "latent_image": [
+                "520",
+                0
+            ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+            "title": "KSampler (Advanced)"
+        }
+    },
+    "640": {
+        "inputs": {
+            "sharpen_radius": 1,
+            "sigma": 0.5,
+            "alpha": 0.5,
+            "image": [
+                "491",
+                0
+            ]
+        },
+        "class_type": "ImageSharpen",
+        "_meta": {
+            "title": "ImageSharpen"
+        }
+    },
+    "641": {
+        "inputs": {
+            "images": [
+                "618",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "642": {
+        "inputs": {
+            "images": [
+                "402",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "643": {
+        "inputs": {
+            "images": [
+                "467",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "644": {
+        "inputs": {
+            "images": [
+                "485",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "645": {
+        "inputs": {
+            "images": [
+                "507",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "646": {
+        "inputs": {
+            "images": [
+                "524",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "647": {
+        "inputs": {
+            "Text": "natural (rainbow:1.1) diamond "
+        },
+        "class_type": "DF_Text_Box",
+        "_meta": {
+            "title": "Text Box"
+        }
+    },
+    "649": {
+        "inputs": {
+            "Text": "natural clear (rainbow:1.15) diamond, rectangular cut"
+        },
+        "class_type": "DF_Text_Box",
+        "_meta": {
+            "title": "Text Box"
+        }
+    },
+    "674": {
+        "inputs": {
+            "image": "input/test/gem.png",
+            "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+            "title": "Load Image"
+        }
+    }
+}

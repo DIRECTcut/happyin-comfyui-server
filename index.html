@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Uploader</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="imageFile" name="imageFile" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            const imageFile = document.getElementById('imageFile').files[0];
+            formData.append('imageFile', imageFile);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('result').innerHTML = 'Image uploaded successfully!';
+                    data.images.forEach((image, index) => {
+                        const img = document.createElement('img');
+                        img.src = image;
+                        img.alt = `Result Image ${index + 1}`;
+                        document.getElementById('result').appendChild(img);
+                    });
+                } else {
+                    document.getElementById('result').innerHTML = 'Image upload failed.';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 'An error occurred.';
+            });
+        });
+    </script>
+</body>
+</html>
