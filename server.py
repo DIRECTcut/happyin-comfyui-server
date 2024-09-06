@@ -34,9 +34,9 @@ def upload_file():
         
         return jsonify(success=True, images=image_urls)
 
-@app.route('/results/<client_id>/<filename>')
-def serve_result_image(client_id, filename):
-    return send_from_directory(os.path.join(RESULTS_FOLDER, client_id), filename)
+# @app.route('/results/<client_id>/<filename>')
+# def serve_result_image(client_id, filename):
+#     return send_from_directory(os.path.join(RESULTS_FOLDER, client_id), filename)
 
 if __name__ == '__main__':
     if not os.path.exists(UPLOAD_FOLDER):
